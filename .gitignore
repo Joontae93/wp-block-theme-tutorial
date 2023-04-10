@@ -24,14 +24,10 @@ wp-config.php
 local-xdebuginfo.php
 
 
-
-
 # WP-Content
 /wp-content/uploads/
 /wp-content/upgrade/
-
-/wp-content/themes/twenty-*
-/wp-content/themes/fictional-university/
+/wp-content/themes/*
 !/wp-content/themes/fictional-university-block-theme
 
 
