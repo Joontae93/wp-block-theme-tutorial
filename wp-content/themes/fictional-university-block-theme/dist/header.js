@@ -22,6 +22,16 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
@@ -104,71 +114,89 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
 /*!************************************************************************************!*\
-  !*** ./wp-content/themes/fictional-university-block-theme/theme-blocks/banner.jsx ***!
+  !*** ./wp-content/themes/fictional-university-block-theme/theme-blocks/header.jsx ***!
   \************************************************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__.registerBlockType)('ourblocktheme/banner', {
-  title: 'Banner',
-  supports: {
-    align: ['full']
-  },
+
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('ourblocktheme/header', {
+  title: 'Headline',
   attributes: {
-    align: {
+    text: {
+      type: 'string'
+    },
+    size: {
       type: 'string',
-      default: 'full'
+      defaut: 'large'
     }
   },
   edit: EditComponent,
   save: SaveComponent
 });
-
-/**
- *
- * @return <h1 className="headline headline--large">Welcome!</h1>
-  <h2 className="headline headline--medium">
-  We think you&rsquo;ll like it here.
-  </h2>
-  <h3 className="headline headline--small">
-  Why don&rsquo;t you check out the <strong>major</strong>{' '}
-  you&rsquo;re interested in?
-  </h3>
-  <a href="#" className="btn btn--large btn--blue">
-  Find Your Major
-  </a>
- */
-
-function EditComponent() {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "page-banner__bg-image",
-    style: {
-      backgroundImage: `url('/wp-content/themes/fictional-university-block-theme/images/library-hero.jpg')`
-    }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "page-banner__content container t-center c-white"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
-    allowedBlocks: ['ourblocktheme/header', 'ourblocktheme/button']
-  })));
+function EditComponent(_ref) {
+  let {
+    attributes,
+    setAttributes
+  } = _ref;
+  function handleTextChange(value) {
+    setAttributes({
+      text: value
+    });
+  }
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarGroup, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
+    isPressed: attributes.size === 'small',
+    onClick: () => setAttributes({
+      size: 'small'
+    })
+  }, "Small"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
+    isPressed: attributes.size === 'medium',
+    onClick: () => setAttributes({
+      size: 'medium'
+    })
+  }, "Medium"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
+    isPressed: attributes.size === 'large',
+    onClick: () => setAttributes({
+      size: 'large'
+    })
+  }, "Large"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    value: attributes.text,
+    onChange: handleTextChange,
+    tagName: "h1",
+    className: `headline headline--${attributes.size}`,
+    allowedFormats: ['core/bold']
+  }));
 }
-function SaveComponent() {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "page-banner__bg-image",
-    style: {
-      backgroundImage: `url('/wp-content/themes/fictional-university-block-theme/images/library-hero.jpg')`
+function SaveComponent(_ref2) {
+  let {
+    attributes
+  } = _ref2;
+  function setTagName() {
+    switch (attributes.size) {
+      case 'large':
+        return 'h1';
+      case 'medium':
+        return 'h2';
+      case 'small':
+        return 'h3';
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "page-banner__content container t-center c-white"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, null)));
+  }
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+    value: attributes.text,
+    className: `headline headline--${attributes.size}`,
+    tagName: setTagName()
+  });
 }
 }();
 /******/ })()
 ;
-//# sourceMappingURL=banner.js.map
+//# sourceMappingURL=header.js.map
