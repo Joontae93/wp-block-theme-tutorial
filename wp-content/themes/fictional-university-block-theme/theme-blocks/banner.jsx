@@ -1,5 +1,13 @@
-import { InnerBlocks } from '@wordpress/block-editor';
+import { Button, PanelBody, PanelRow } from '@wordpress/components';
+import apiFetch from '@wordpress/api-fetch';
+import {
+	InnerBlocks,
+	InspectorControls,
+	MediaUpload,
+	MediaUploadCheck,
+} from '@wordpress/block-editor';
 import { registerBlockType } from '@wordpress/blocks';
+import { useEffect } from '@wordpress/element';
 
 registerBlockType('ourblocktheme/banner', {
 	title: 'Banner',
@@ -8,56 +16,66 @@ registerBlockType('ourblocktheme/banner', {
 	},
 	attributes: {
 		align: { type: 'string', default: 'full' },
+		imgID: { type: 'number' },
+		imgUrl: { type: 'string', default: banner.fallback_image },
 	},
 	edit: EditComponent,
 	save: SaveComponent,
 });
 
-/**
- *
- * @return <h1 className="headline headline--large">Welcome!</h1>
-  <h2 className="headline headline--medium">
-  We think you&rsquo;ll like it here.
-  </h2>
-  <h3 className="headline headline--small">
-  Why don&rsquo;t you check out the <strong>major</strong>{' '}
-  you&rsquo;re interested in?
-  </h3>
-  <a href="#" className="btn btn--large btn--blue">
-  Find Your Major
-  </a>
- */
-
-function EditComponent() {
+function EditComponent({ setAttributes, attributes }) {
+	useEffect(() => {
+		if (attributes.imgID) {
+			async function getImageAttributes() {
+				const response = await apiFetch({
+					path: `/wp/v2/media/${attributes.imgID}`,
+					method: 'GET',
+				});
+				setAttributes({
+					imgUrl: response.media_details.sizes.pageBanner.source_url,
+				});
+			}
+			getImageAttributes();
+		}
+	}, [attributes.imgID]);
+	function onFileSelect(img) {
+		setAttributes({ imgID: img.id });
+	}
 	return (
-		<section>
-			<div
-				className="page-banner__bg-image"
-				style={{
-					backgroundImage: `url('/wp-content/themes/fictional-university-block-theme/images/library-hero.jpg')`,
-				}}></div>
-			<div className="page-banner__content container t-center c-white">
-				<InnerBlocks
-					allowedBlocks={[
-						'ourblocktheme/header',
-						'ourblocktheme/button',
-					]}
-				/>
-			</div>
-		</section>
+		<>
+			<InspectorControls>
+				<PanelBody title="Background" initialOpen={true}>
+					<PanelRow>
+						<MediaUploadCheck>
+							<MediaUpload
+								onSelect={onFileSelect}
+								value={attributes.imgID}
+								render={({ open }) => (
+									<Button onClick={open}>Choose Image</Button>
+								)}
+							/>
+						</MediaUploadCheck>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>
+			<section className="page-banner">
+				<div
+					className="page-banner__bg-image"
+					style={{
+						backgroundImage: `url('${attributes.imgUrl}')`,
+					}}></div>
+				<div className="page-banner__content container t-center c-white">
+					<InnerBlocks
+						allowedBlocks={[
+							'ourblocktheme/headline',
+							'ourblocktheme/button',
+						]}
+					/>
+				</div>
+			</section>
+		</>
 	);
 }
 function SaveComponent() {
-	return (
-		<section>
-			<div
-				className="page-banner__bg-image"
-				style={{
-					backgroundImage: `url('/wp-content/themes/fictional-university-block-theme/images/library-hero.jpg')`,
-				}}></div>
-			<div className="page-banner__content container t-center c-white">
-				<InnerBlocks.Content />
-			</div>
-		</section>
-	);
+	return <InnerBlocks.Content />;
 }

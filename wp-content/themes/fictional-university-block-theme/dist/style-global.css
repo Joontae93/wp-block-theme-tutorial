@@ -520,6 +520,13 @@ li {
 }
 
 /* BEM Blocks */
+.static-block {
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.65rem;
+  background-image: linear-gradient(180deg, #dedede, #adadad);
+}
+
 .remove-favorite {
   display: inline-block;
   transition: all 0.3s;
@@ -1374,7 +1381,9 @@ body.login {
 }
 .page-banner__bg-image {
   opacity: 0.33;
+  background-color: #000;
   background-size: cover;
+  background-position: center;
   position: absolute;
   top: 0;
   bottom: 0;

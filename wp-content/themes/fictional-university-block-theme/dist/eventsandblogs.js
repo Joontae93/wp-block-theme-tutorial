@@ -93,9 +93,9 @@ module.exports = window["wp"]["element"];
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
-/*!************************************************************************************!*\
-  !*** ./wp-content/themes/fictional-university-block-theme/theme-blocks/header.jsx ***!
-  \************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** ./wp-content/themes/fictional-university-block-theme/theme-blocks/eventsandblogs.jsx ***!
+  \********************************************************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -103,18 +103,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
 
 
-// import '../src/styles/modules/events-and-blogs.scss';
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('ourblocktheme/header', {
-  title: 'Header',
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('ourblocktheme/eventsandblogs', {
+  title: 'Events and Blogs',
   edit: EditComponent,
   save: () => null
 });
 function EditComponent() {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "static-block"
-  }, "This is a \"Header\" placeholder.");
+  }, "This is an \"Events & Blogs\" placeholder.");
 }
 }();
 /******/ })()
 ;
-//# sourceMappingURL=header.js.map
+//# sourceMappingURL=eventsandblogs.js.map
