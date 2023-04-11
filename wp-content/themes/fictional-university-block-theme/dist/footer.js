@@ -94,7 +94,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
 /*!************************************************************************************!*\
-  !*** ./wp-content/themes/fictional-university-block-theme/theme-blocks/header.jsx ***!
+  !*** ./wp-content/themes/fictional-university-block-theme/theme-blocks/footer.jsx ***!
   \************************************************************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -103,17 +103,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('ourblocktheme/header', {
-  title: 'Header',
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('ourblocktheme/footer', {
+  title: 'Footer',
   edit: EditComponent,
   save: () => null
 });
 function EditComponent() {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "static-block"
-  }, "This is a \"Header\" placeholder.");
+  }, "This is a \"Footer\" placeholder.");
 }
 }();
 /******/ })()
 ;
-//# sourceMappingURL=header.js.map
+//# sourceMappingURL=footer.js.map

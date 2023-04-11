@@ -23,7 +23,16 @@ const appNames = [];
  */
 const styleSheets = []; // for scss only
 
-const blocks = ['banner', 'header', 'button', 'eventsandblogs', 'headline'];
+const blocks = [
+	'banner',
+	'header',
+	'button',
+	'eventsandblogs',
+	'headline',
+	'footer',
+	'slideshow',
+	'slide',
+];
 
 module.exports = {
 	...defaultConfig,
